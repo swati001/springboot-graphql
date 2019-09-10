@@ -1,5 +1,9 @@
 package com.graphql.springgraphql.demo;
 
+import java.util.Optional;
+
+import javax.persistence.EntityNotFoundException;
+
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 
 public class Mutation implements GraphQLMutationResolver {
@@ -35,15 +39,15 @@ public class Mutation implements GraphQLMutationResolver {
     }
     
     public Book updateBookPageCount(Integer pageCount, Long id) {
-        Book book = bookRepository.findById(id);
+        Optional<Book> book = bookRepository.findById(id);
         if(book == null) {
             throw new BookNotFoundException("The book to be updated was not found", id);
         }
-        book.setPageCount(pageCount);
+        book.get().setPageCount(pageCount);
 
-        bookRepository.save(book);
+        bookRepository.save(book.get());
 
-        return book;
+        return book.get();
     }
     
     public boolean deleteBook(Long id) {

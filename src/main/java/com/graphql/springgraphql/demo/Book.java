@@ -31,7 +31,7 @@ public class Book {
     private int pageCount;
 
     @ManyToOne
-    @JoinColumn(name = "author_id",
+    @JoinColumn(name = "_id",
             nullable = false, updatable = false)
     private Author author;
     
