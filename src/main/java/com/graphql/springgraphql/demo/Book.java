@@ -1,5 +1,6 @@
 package com.graphql.springgraphql.demo;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,12 +28,13 @@ public class Book {
     private String title;
 
     private String isbn;
-
+    
+    @Column(name = "page_count")
     private int pageCount;
 
     @ManyToOne
-    @JoinColumn(name = "_id",
-            nullable = false, updatable = false)
+    @JoinColumn(name = "id",
+            nullable = false, insertable= false, updatable = false)
     private Author author;
     
     public Book(String title, String isbn, int pageCount, Author author) {

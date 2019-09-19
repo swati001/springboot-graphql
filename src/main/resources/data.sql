@@ -1,0 +1,22 @@
+DROP TABLE IF EXISTS book;
+ 
+CREATE TABLE book (
+  id INT AUTO_INCREMENT  PRIMARY KEY,
+  title VARCHAR(250) NOT NULL,
+  isbn VARCHAR(250) NOT NULL,
+  page_count INT DEFAULT NULL
+);
+ 
+INSERT INTO book (id, title, isbn, page_count) VALUES
+  (1, 'Mein Kampf', '123456', 540);
+  
+DROP TABLE IF EXISTS author;
+ 
+CREATE TABLE author (
+  id INT NOT NULL,
+  FIRST_NAME VARCHAR(250) NOT NULL,
+  LAST_NAME VARCHAR(250) NOT NULL
+);
+ 
+INSERT INTO author (id, FIRST_NAME, LAST_NAME) VALUES
+  (2, 'Adolf', 'Hitler');
